@@ -3,14 +3,17 @@
     <head>
         <meta charset="utf-8">
         <title>From scratch multi-level push menu</title>
+        <link rel="stylesheet" href="css/fs-pushmenu-reset.css">
         <link rel="stylesheet" href="css/fs-pushmenu.css">
+        <link rel="stylesheet" href="css/fs-pushmenu-skin.css">
         <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
         <script src="js/fs-pushmenu.js"></script>
     </head>
     <body>
         <h1>From scratch multi-level push menu</h1>
         <nav class="fs-pushmenu">
-            <a class="fs-back-link" href="#" data-current-level="0">Back</a>
+            <div class="fs-current fs-hidden"></div>
+            <a class="fs-previous" href="#" data-current-level="0">Back</a>
             <ul class="fs-level" data-level="0">
                 <li class="fs-item" data-state="closed">
                     <a class="fs-link" href="#">Europe</a>
