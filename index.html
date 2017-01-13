@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>From scratch multi-level push menu</title>
+        <link rel="stylesheet" href="css/fs-pushmenu.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+        <script src="js/fs-pushmenu.js"></script>
+    </head>
+    <body>
+        <h1>From scratch multi-level push menu</h1>
+        <nav class="fs-pushmenu">
+            <a class="fs-back-link" href="#" data-current-level="0">Back</a>
+            <ul class="fs-level" data-level="0">
+                <li class="fs-item" data-state="closed">
+                    <a class="fs-link" href="#">Europe</a>
+                    <ul class="fs-level" data-level="1">
+                        <li class="fs-item">
+                            <a class="fs-link" href="#">Angleterre</a>
+                        </li>
+                        <li class="fs-item">
+                            <a class="fs-link" href="#">Allemagne</a>
+                        </li>
+                        <li class="fs-item" data-state="closed">
+                            <a class="fs-link" href="#">France</a>
+                            <ul class="fs-level" data-level="2">
+                                <li class="fs-item">
+                                    <a class="fs-link" href="#">Ain</a>
+                                </li>
+                                <li class="fs-item" data-state="closed">
+                                    <a class="fs-link" href="#">Alsace</a>
+                                    <ul class="fs-level" data-level="3">
+                                        <li class="fs-item">
+                                            <a class="fs-link" href="#">Strasbourg</a>
+                                        </li>
+                                        <li class="fs-item">
+                                            <a class="fs-link" href="#">Colmar</a>
+                                        </li>
+                                    </ul>                                
+                                </li>
+                                <li class="fs-item">
+                                    <a class="fs-link" href="#">Normandie</a>
+                                </li>
+                                <li class="fs-item">
+                                    <a class="fs-link" href="#">Bretagne</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fs-item">
+                            <a class="fs-link" href="#">Espagne</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="fs-item" data-state="closed">
+                    <a class="fs-link" href="#">Australie</a>
+                    <ul class="fs-level" data-level="1">
+                        <li class="fs-item">
+                            <a class="fs-link" href="#">Tasmanie</a>
+                        </li>
+                        <li class="fs-item">
+                            <a class="fs-link" href="#">Victoria</a>
+                        </li>
+                    </ul>                
+                </li>
+                <li class="fs-item">
+                    <a class="fs-link" href="#">Etats-Unis</a>
+                </li>
+                <li class="fs-item">
+                    <a class="fs-link" href="#">Afrique</a>
+                </li>
+                <li class="fs-item">
+                    <a class="fs-link" href="#">Océanie</a>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>
