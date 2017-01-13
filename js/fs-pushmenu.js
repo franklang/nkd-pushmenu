@@ -20,7 +20,7 @@ $(document).ready(function(){
                                 });
 
         // Get current level
-        var getCurrentLevel = $(this)
+        var getCurrentLevelValue = $(this)
                                 .parent('li.fs-item')
                                 .children('ul.fs-level')
                                 .attr('data-level');
@@ -29,7 +29,7 @@ $(document).ready(function(){
         function setSubLevelState(element,state){
             element
                 .parent('li.fs-item')
-                .attr('data-state', state);         
+                .attr('data-state', state);
         }
 
         if (getSubLevelState == 'closed'){
@@ -40,28 +40,53 @@ $(document).ready(function(){
                 .siblings()
                 .addClass('fs-hidden');
 
-            $('a.fs-back-link')
-                .attr('data-current-level', + getCurrentLevel);
+            $('a.fs-previous')
+                .attr('data-current-level', + getCurrentLevelValue);
         }
     });
 
-    $('a.fs-back-link').on('click', function(){
+    $('a.fs-previous').on('click', function(){
         // Last opened
-        $('li.fs-item[data-state="open"]')
-            .last()
+        $('li.fs-item[data-state="open"]:last')
             .attr('data-state', 'closed');
 
         // Update data-current-level value
-        var updateCurrentLevel = $('li.fs-item[data-state="closed"]')
-                        .first()
+        var updateCurrentLevelValue = $('li.fs-item[data-state="closed"]:first')
                         .closest('ul.fs-level')
                         .attr('data-level');
-        $('a.fs-back-link').attr('data-current-level', updateCurrentLevel);
+        $('a.fs-previous').attr('data-current-level', updateCurrentLevelValue);
 
         // Show previously hidden items again
-        $('ul.fs-level[data-level="' + updateCurrentLevel + '"')
+        $('ul.fs-level[data-level="' + updateCurrentLevelValue + '"')
             .children('li.fs-item')
             .siblings()
             .removeClass('fs-hidden');
+    });
+
+    $('a.fs-link, a.fs-previous').on('click', function(){
+        var getCurrentLevelLabel = $('li.fs-item[data-state="open"]:last')
+                                        .children('a.fs-link')
+                                        .text();
+
+        var getPreviousLevelLabel = $('li.fs-item[data-state="open"]:last')
+                                        .parent('ul.fs-level')
+                                        .prev('a.fs-link')
+                                        .text();
+
+        $('.fs-current').empty().text(getCurrentLevelLabel);
+        $('a.fs-previous').empty().text(getPreviousLevelLabel);
+
+
+        if ($('.fs-current').text().length > 0){
+            $('.fs-current').removeClass('fs-hidden');
+        }
+
+        else if ($('.fs-current').text().length == 0){
+            $('.fs-current').addClass('fs-hidden');
+        }
+
+        if ($('a.fs-previous').text().length == 0){
+            $('a.fs-previous').text('Back');
+        }        
     });
 });
