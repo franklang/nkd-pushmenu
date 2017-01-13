@@ -1,0 +1,37 @@
+//
+// skin
+.fs-pushmenu{
+    width: 300px;
+    text-align: left;
+    display: inline-block;
+    
+    .fs{
+        &-previous{
+            display: block;
+            &:before{
+                margin-right: 10px;
+                content: "<";
+            }
+        }
+        &-item[data-state="closed"]{
+            > .fs-link{
+                &:after{
+                    margin-left: 10px;
+                }
+            }
+        }
+        &-item[data-state="closed"]{
+            > .fs-link{
+                &:after{
+                    content: ">";
+                }
+            }
+        }        
+        &-link,
+        &-previous,
+        &-current{
+            padding: 10px;
+            border: 1px solid #000;
+        }
+    }
+}
