@@ -1,6 +1,6 @@
 .fs-pushmenu{
     .fs{
-        &-back-link[data-current-level="0"]{
+        &-previous[data-current-level="0"]{
             display: none;
         }
         &-item[data-state="closed"]{
@@ -24,36 +24,6 @@
         }
         &-hidden{
             display: none;
-        }
-    }
-
-    //
-    // skin
-    .fs{
-        &-back-link{
-            &:before{
-                margin-right: 10px;
-                content: "<";
-            }
-        }
-        &-item[data-state="closed"]{
-            > .fs-link{
-                &:after{
-                    margin-left: 10px;
-                }
-            }
-        }
-        &-item[data-state="closed"]{
-            > .fs-link{
-                &:after{
-                    content: ">";
-                }
-            }
-        }        
-        &-link,
-        &-back-link{
-            padding: 10px;
-            border: 1px solid #000;
         }
     }
 }
