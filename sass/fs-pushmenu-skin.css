@@ -1,0 +1,16 @@
+.fs-pushmenu {
+  width: 300px;
+  text-align: left;
+  display: inline-block; }
+  .fs-pushmenu .fs-previous {
+    display: block; }
+    .fs-pushmenu .fs-previous:before {
+      margin-right: 10px;
+      content: "<"; }
+  .fs-pushmenu .fs-item[data-state="closed"] > .fs-link:after {
+    margin-left: 10px; }
+  .fs-pushmenu .fs-item[data-state="closed"] > .fs-link:after {
+    content: ">"; }
+  .fs-pushmenu .fs-link, .fs-pushmenu .fs-previous, .fs-pushmenu .fs-current {
+    padding: 10px;
+    border: 1px solid #000; }

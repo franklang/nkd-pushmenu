@@ -1,0 +1,16 @@
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  margin: 0 auto;
+  text-align: center; }
+
+ul {
+  list-style-type: none; }
+
+ul, li {
+  margin: 0;
+  padding: 0; }
