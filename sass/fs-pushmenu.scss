@@ -1,21 +1,21 @@
-.fs-pushmenu{
-    .fs{
+.nkd-pushmenu{
+    .nkd{
         &-previous[data-current-level="0"]{
             display: none;
         }
         &-item[data-state="closed"]{
-            > .fs-link{
+            > .nkd-link{
                 display: block;
             }
-            > .fs-level{
+            > .nkd-level{
                 display: none;
             }
         }
         &-item[data-state="open"]{
-            > .fs-link{
+            > .nkd-link{
                 display: none;
             }
-            > .fs-level{
+            > .nkd-level{
                 display: block;
             }
         }

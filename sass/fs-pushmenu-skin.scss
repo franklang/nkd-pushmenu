@@ -1,11 +1,11 @@
 //
 // skin
-.fs-pushmenu{
+.nkd-pushmenu{
     width: 300px;
     text-align: left;
     display: inline-block;
-    
-    .fs{
+
+    .nkd{
         &-previous{
             display: block;
             &:before{
@@ -14,19 +14,19 @@
             }
         }
         &-item[data-state="closed"]{
-            > .fs-link{
+            > .nkd-link{
                 &:after{
                     margin-left: 10px;
                 }
             }
         }
         &-item[data-state="closed"]{
-            > .fs-link{
+            > .nkd-link{
                 &:after{
                     content: ">";
                 }
             }
-        }        
+        }
         &-link,
         &-previous,
         &-current{
