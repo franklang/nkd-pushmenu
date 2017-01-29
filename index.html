@@ -3,24 +3,23 @@
     <head>
         <meta charset="utf-8">
         <title>[The Naked series] A minimalist ready-to-use and skin HTML5/SASS/jQuery multi-level push menu component for your website.</title>
-        <link rel="stylesheet" href="css/nkd-pushmenu-reset.css">
         <link rel="stylesheet" href="css/nkd-common.css">
-        <link rel="stylesheet" href="css/nkd-pushmenu.css">
+        <link rel="stylesheet" href="css/nkd-pushmenu-reset.css">
+        <link rel="stylesheet" href="css/nkd-pushmenu-core.css">
         <link rel="stylesheet" href="css/nkd-pushmenu-skin.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
         <script src="js/nkd-pushmenu.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $('#demoNav').nakedPushMenu();
+                $('#demoNakedPushMenu').nkdPushMenu();
             });
         </script>
     </head>
     <body>
         <h1>[The Naked series] A minimalist ready-to-use and skin HTML5/SASS/jQuery multi-level push menu component for your website.</h1>
-        <nav id="demoNav" class="nkd nkd-pushmenu">
-            <div class="nkd-current-position js-nkd-current-position nkd-hidden">Home</div>
-            <a class="nkd-previous js-nkd-previous" href="#" data-current-level="0">Back</a>
+        <nav id="demoNakedPushMenu" class="nkd nkd-pushmenu">
+            <div class="nkd-current-position js-nkd-current-position">Home</div>
+            <a class="nkd-previous js-nkd-previous" href="#" data-current-level="0"></a>
             <ul class="nkd-level js-nkd-level" data-level="0">
                 <li class="nkd-item js-nkd-item" data-state="closed">
                     <a class="nkd-link js-nkd-link" href="#">Europe</a>

@@ -31,7 +31,13 @@
         &-previous,
         &-current-position{
             padding: 10px;
-            border: 1px solid #000;
+            border: 1px solid #ededed;
+        }
+        &-link,
+        &-previous{
+            &:focus{
+                background-color: #ececec;
+            }
         }
     }
 }

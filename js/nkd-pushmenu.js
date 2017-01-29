@@ -1,7 +1,8 @@
 ;(function ($, window, undefined){
-    $.fn.nakedPushMenu = function(){
+    $.fn.nkdPushMenu = function(){
         var $previous = $('a.js-nkd-previous');
-        var $current = $('.js-nkd-current-position');
+        var $currentPosition = $('.js-nkd-current-position');
+        var $currentPositionInitialText = $currentPosition.text();
 
         // Set clicked link sublevel state (open/closed)
         function setSubLevelState(element, state){
@@ -72,14 +73,10 @@
                                             .children('a.js-nkd-link')
                                             .text();
 
-            $current.empty().text(getCurrentLevelLabel);
+            $currentPosition.empty().text(getCurrentLevelLabel);
 
-            if ($current.text().length > 0){
-                $current.removeClass('nkd-hidden');
-            }
-
-            else if ($current.text().length == 0){
-                $current.addClass('nkd-hidden');
+            if ($currentPosition.text().length == 0){
+                $currentPosition.text($currentPositionInitialText);
             }
         }
 
