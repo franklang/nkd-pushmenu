@@ -1,4 +1,14 @@
 $(document).ready(function(){
+    var $previous = $('a.nkd-previous');
+    var $current = $('.nkd-current');
+
+    // Set clicked link sublevel state (open/closed)
+    function setSubLevelState(element,state){
+        element
+            .parent('li.nkd-item')
+            .attr('data-state', state);
+    }
+
     function onLinkClick(){
         // Get current nav level of clicked link
         var getLinkNavLevel = $(this)
@@ -25,13 +35,6 @@ $(document).ready(function(){
                                 .children('ul.nkd-level')
                                 .attr('data-level');
 
-        // Set clicked link sublevel state (open/closed)
-        function setSubLevelState(element,state){
-            element
-                .parent('li.nkd-item')
-                .attr('data-state', state);
-        }
-
         if (getSubLevelState == 'closed'){
             setSubLevelState($(this),'open');
 
@@ -40,7 +43,7 @@ $(document).ready(function(){
                 .siblings()
                 .addClass('nkd-hidden');
 
-            $('a.nkd-previous')
+            $previous
                 .attr('data-current-level', + getCurrentLevelValue);
         }
     }
@@ -54,7 +57,7 @@ $(document).ready(function(){
         var updateCurrentLevelValue = $('li.nkd-item[data-state="closed"]:first')
                         .closest('ul.nkd-level')
                         .attr('data-level');
-        $('a.nkd-previous').attr('data-current-level', updateCurrentLevelValue);
+        $previous.attr('data-current-level', updateCurrentLevelValue);
 
         // Show previously hidden items again
         $('ul.nkd-level[data-level="' + updateCurrentLevelValue + '"')
@@ -68,14 +71,14 @@ $(document).ready(function(){
                                         .children('a.nkd-link')
                                         .text();
 
-        $('.nkd-current').empty().text(getCurrentLevelLabel);
+        $current.empty().text(getCurrentLevelLabel);
 
-        if ($('.nkd-current').text().length > 0){
-            $('.nkd-current').removeClass('nkd-hidden');
+        if ($current.text().length > 0){
+            $current.removeClass('nkd-hidden');
         }
 
-        else if ($('.nkd-current').text().length == 0){
-            $('.nkd-current').addClass('nkd-hidden');
+        else if ($current.text().length == 0){
+            $current.addClass('nkd-hidden');
         }
     }
 
@@ -85,10 +88,10 @@ $(document).ready(function(){
                                         .prev('a.nkd-link')
                                         .text();
 
-        $('a.nkd-previous').empty().text(getPreviousLevelLabel);
+        $previous.empty().text(getPreviousLevelLabel);
 
-        if ($('a.nkd-previous').text().length == 0){
-            $('a.nkd-previous').text('Home');
+        if ($previous.text().length == 0){
+            $previous.text('Home');
         }
     }
 
@@ -98,6 +101,6 @@ $(document).ready(function(){
     }
 
     $('a.nkd-link').on('click', onLinkClick);
-    $('a.nkd-previous').on('click', onPreviousLinkClick);
+    $previous.on('click', onPreviousLinkClick);
     $('a.nkd-link, a.nkd-previous').on('click', showCurrentAndPreviousLevelsLabels);
 });
