@@ -1,105 +1,109 @@
 ;(function ($, window, undefined){
-    $.fn.nkdPushMenu = function(){
-        var $previous = $('a.js-nkd-previous');
-        var $currentPosition = $('.js-nkd-current-position');
-        var $currentPositionInitialText = $currentPosition.text();
+  $.fn.nkdPushmenu = function(){
+    var $previous = $('a.js-nkd-previous');
+    var $currentPosition = $('.js-nkd-current-position');
+    var $currentPositionInitialText = $currentPosition.text();
 
-        // Set clicked link sublevel state (open/closed)
-        function setSubLevelState(element, state){
-            element
-                .parent('li.js-nkd-item')
-                .attr('data-state', state);
-        }
+    // Set clicked link sublevel state (open/closed)
+    function setSubLevelState(element, state){
+      element
+        .parent('li.js-nkd-item')
+        .attr('data-state', state);
+    }
 
-        function onLinkClick(){
-            // Get current nav level of clicked link
-            var getLinkNavLevel = $(this)
-                                    .closest('ul.js-nkd-level')
-                                    .attr('data-level');
+    function onLinkClick(){
+      // Get current nav level of clicked link
+      var getLinkNavLevel = $(this)
+        .closest('ul.js-nkd-level')
+        .attr('data-level');
 
-            // Get clicked link sublevel state (open/closed)
-            var getSubLevelState = $(this)
-                                    .parent('li.js-nkd-item')
-                                    .attr('data-state');
+      // Get clicked link sublevel state (open/closed)
+      var getSubLevelState = $(this)
+        .parent('li.js-nkd-item')
+        .attr('data-state');
 
-            // Close children sublevels
-            var closeChildren = $(this)
-                                    .parent('li.js-nkd-item')
-                                    .find('li.js-nkd-item[data-state="open"]')
-                                    .each(function(){
-                                        $(this)
-                                            .attr('data-state', 'closed');
-                                    });
+      // Close children sublevels
+      var closeChildren = $(this)
+        .parent('li.js-nkd-item')
+        .find('li.js-nkd-item[data-state="open"]')
+        .each(function(){
+          $(this)
+            .attr('data-state', 'closed');
+        });
 
-            // Get current level
-            var getCurrentLevelValue = $(this)
-                                    .parent('li.js-nkd-item')
-                                    .children('ul.js-nkd-level')
-                                    .attr('data-level');
+      // Get current level
+      var getCurrentLevelValue = $(this)
+        .parent('li.js-nkd-item')
+        .children('ul.js-nkd-level')
+        .attr('data-level');
 
-            if (getSubLevelState == 'closed'){
-                setSubLevelState($(this),'open');
+      if (getSubLevelState == 'closed'){
+        setSubLevelState($(this),'open');
 
-                $(this)
-                    .parent('li.js-nkd-item')
-                    .siblings()
-                    .addClass('nkd-hidden');
+        $(this)
+          .parent('li.js-nkd-item')
+          .siblings()
+          .addClass('nkd-hidden');
 
-                $previous
-                    .attr('data-current-level', + getCurrentLevelValue);
-            }
-        }
+        $previous
+          .attr('data-current-level', + getCurrentLevelValue);
+      }
+    }
 
-        function onPreviousLinkClick(){
-            // Last opened
-            $('li.js-nkd-item[data-state="open"]:last')
-                .attr('data-state', 'closed');
+    function onPreviousLinkClick(){
+      // Last opened
+      $('li.js-nkd-item[data-state="open"]:last')
+        .attr('data-state', 'closed');
 
-            // Update data-current-level value
-            var updateCurrentLevelValue = $('li.js-nkd-item[data-state="closed"]:first')
-                            .closest('ul.js-nkd-level')
-                            .attr('data-level');
-            $previous.attr('data-current-level', updateCurrentLevelValue);
+      // Update data-current-level value
+      var updateCurrentLevelValue =
+        $('li.js-nkd-item[data-state="closed"]:first')
+          .closest('ul.js-nkd-level')
+          .attr('data-level');
 
-            // Show previously hidden items again
-            $('ul.js-nkd-level[data-level="' + updateCurrentLevelValue + '"')
-                .children('li.js-nkd-item')
-                .siblings()
-                .removeClass('nkd-hidden');
-        }
+      $previous.attr('data-current-level', updateCurrentLevelValue);
 
-        function showCurrentLevelLabel(){
-            var getCurrentLevelLabel = $('li.js-nkd-item[data-state="open"]:last')
-                                            .children('a.js-nkd-link')
-                                            .text();
+      // Show previously hidden items again
+      $('ul.js-nkd-level[data-level="' + updateCurrentLevelValue + '"')
+        .children('li.js-nkd-item')
+        .siblings()
+        .removeClass('nkd-hidden');
+    }
 
-            $currentPosition.empty().text(getCurrentLevelLabel);
+    function showCurrentLevelLabel(){
+      var getCurrentLevelLabel =
+        $('li.js-nkd-item[data-state="open"]:last')
+          .children('a.js-nkd-link')
+          .text();
 
-            if ($currentPosition.text().length == 0){
-                $currentPosition.text($currentPositionInitialText);
-            }
-        }
+      $currentPosition.empty().text(getCurrentLevelLabel);
 
-        function showPreviousLevelLabel(){
-            var getPreviousLevelLabel = $('li.js-nkd-item[data-state="open"]:last')
-                                            .parent('ul.js-nkd-level')
-                                            .prev('a.js-nkd-link')
-                                            .text();
+      if ($currentPosition.text().length == 0){
+        $currentPosition.text($currentPositionInitialText);
+      }
+    }
 
-            $previous.empty().text(getPreviousLevelLabel);
+    function showPreviousLevelLabel(){
+      var getPreviousLevelLabel =
+        $('li.js-nkd-item[data-state="open"]:last')
+          .parent('ul.js-nkd-level')
+          .prev('a.js-nkd-link')
+          .text();
 
-            if ($previous.text().length == 0){
-                $previous.text('Home');
-            }
-        }
+      $previous.empty().text(getPreviousLevelLabel);
 
-        function showCurrentAndPreviousLevelsLabels(){
-            showCurrentLevelLabel();
-            showPreviousLevelLabel();
-        }
+      if ($previous.text().length == 0){
+        $previous.text('Home');
+      }
+    }
 
-        $('a.js-nkd-link').on('click', onLinkClick);
-        $previous.on('click', onPreviousLinkClick);
-        $('a.js-nkd-link, a.js-nkd-previous').on('click', showCurrentAndPreviousLevelsLabels);
-    };
+    function showCurrentAndPreviousLevelsLabels(){
+      showCurrentLevelLabel();
+      showPreviousLevelLabel();
+    }
+
+    $('a.js-nkd-link').on('click', onLinkClick);
+    $previous.on('click', onPreviousLinkClick);
+    $('a.js-nkd-link, a.js-nkd-previous').on('click', showCurrentAndPreviousLevelsLabels);
+  };
 }(jQuery, window));

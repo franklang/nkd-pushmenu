@@ -1,86 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>[The Naked series] A minimalist ready-to-use and skin HTML5/SASS/jQuery multi-level push menu component for your website.</title>
-        <link rel="stylesheet" href="css/nkd-common.css">
-        <link rel="stylesheet" href="css/nkd-pushmenu-reset.css">
-        <link rel="stylesheet" href="css/nkd-pushmenu-core.css">
-        <link rel="stylesheet" href="css/nkd-pushmenu-skin.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-        <script src="js/nkd-pushmenu.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('#demoNakedPushMenu').nkdPushMenu();
-            });
-        </script>
-    </head>
-    <body>
-        <h1>[The Naked series] A minimalist ready-to-use and skin HTML5/SASS/jQuery multi-level push menu component for your website.</h1>
-        <nav id="demoNakedPushMenu" class="nkd nkd-pushmenu">
-            <div class="nkd-current-position js-nkd-current-position">Home</div>
-            <a class="nkd-previous js-nkd-previous" href="#" data-current-level="0"></a>
-            <ul class="nkd-level js-nkd-level" data-level="0">
-                <li class="nkd-item js-nkd-item" data-state="closed">
-                    <a class="nkd-link js-nkd-link" href="#">Europe</a>
-                    <ul class="nkd-level js-nkd-level" data-level="1">
-                        <li class="nkd-item js-nkd-item">
-                            <a class="nkd-link js-nkd-link" href="#">Angleterre</a>
-                        </li>
-                        <li class="nkd-item js-nkd-item">
-                            <a class="nkd-link js-nkd-link" href="#">Allemagne</a>
-                        </li>
-                        <li class="nkd-item js-nkd-item" data-state="closed">
-                            <a class="nkd-link js-nkd-link" href="#">France</a>
-                            <ul class="nkd-level js-nkd-level" data-level="2">
-                                <li class="nkd-item js-nkd-item">
-                                    <a class="nkd-link js-nkd-link" href="#">Ain</a>
-                                </li>
-                                <li class="nkd-item js-nkd-item" data-state="closed">
-                                    <a class="nkd-link js-nkd-link" href="#">Alsace</a>
-                                    <ul class="nkd-level js-nkd-level" data-level="3">
-                                        <li class="nkd-item js-nkd-item">
-                                            <a class="nkd-link js-nkd-link" href="#">Strasbourg</a>
-                                        </li>
-                                        <li class="nkd-item js-nkd-item">
-                                            <a class="nkd-link js-nkd-link" href="#">Colmar</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nkd-item js-nkd-item">
-                                    <a class="nkd-link js-nkd-link" href="#">Normandie</a>
-                                </li>
-                                <li class="nkd-item js-nkd-item">
-                                    <a class="nkd-link js-nkd-link" href="#">Bretagne</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nkd-item js-nkd-item">
-                            <a class="nkd-link js-nkd-link" href="#">Espagne</a>
-                        </li>
-                    </ul>
+  <head>
+    <meta charset="utf-8">
+    <title>[The Naked series] A minimalist ready-to-use and skin HTML5/SASS/jQuery multi-level push menu component for your website.</title>
+    <link rel="stylesheet" href="css/nkd-reset.css">
+    <link rel="stylesheet" href="css/nkd-common.css">
+    <link rel="stylesheet" href="css/nkd-pushmenu-core.css">
+    <link rel="stylesheet" href="css/nkd-pushmenu-skin.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="js/nkd-pushmenu.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#demoNakedPushmenu').nkdPushmenu();
+      });
+    </script>
+  </head>
+  <body>
+    <h1>[The Naked series] A minimalist ready-to-use and skin HTML5/SASS/jQuery multi-level push menu component for your website.</h1>
+    <nav id="demoNakedPushmenu" class="nkd nkd-pushmenu">
+      <div class="nkd-current-position js-nkd-current-position">Home</div>
+      <a class="nkd-previous js-nkd-previous" href="#" data-current-level="0"></a>
+      <ul class="nkd-level js-nkd-level" data-level="0">
+        <li class="nkd-item js-nkd-item" data-state="closed">
+          <a class="nkd-link js-nkd-link" href="#">Europe</a>
+          <ul class="nkd-level js-nkd-level" data-level="1">
+            <li class="nkd-item js-nkd-item">
+              <a class="nkd-link js-nkd-link" href="#">Angleterre</a>
+            </li>
+            <li class="nkd-item js-nkd-item">
+              <a class="nkd-link js-nkd-link" href="#">Allemagne</a>
+            </li>
+            <li class="nkd-item js-nkd-item" data-state="closed">
+              <a class="nkd-link js-nkd-link" href="#">France</a>
+              <ul class="nkd-level js-nkd-level" data-level="2">
+                <li class="nkd-item js-nkd-item">
+                  <a class="nkd-link js-nkd-link" href="#">Ain</a>
                 </li>
                 <li class="nkd-item js-nkd-item" data-state="closed">
-                    <a class="nkd-link js-nkd-link" href="#">Australie</a>
-                    <ul class="nkd-level js-nkd-level" data-level="1">
-                        <li class="nkd-item js-nkd-item">
-                            <a class="nkd-link js-nkd-link" href="#">Tasmanie</a>
-                        </li>
-                        <li class="nkd-item js-nkd-item">
-                            <a class="nkd-link js-nkd-link" href="#">Victoria</a>
-                        </li>
-                    </ul>
+                  <a class="nkd-link js-nkd-link" href="#">Alsace</a>
+                  <ul class="nkd-level js-nkd-level" data-level="3">
+                    <li class="nkd-item js-nkd-item">
+                      <a class="nkd-link js-nkd-link" href="#">Strasbourg</a>
+                    </li>
+                    <li class="nkd-item js-nkd-item">
+                      <a class="nkd-link js-nkd-link" href="#">Colmar</a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nkd-item js-nkd-item">
-                    <a class="nkd-link js-nkd-link" href="#">Etats-Unis</a>
+                  <a class="nkd-link js-nkd-link" href="#">Normandie</a>
                 </li>
                 <li class="nkd-item js-nkd-item">
-                    <a class="nkd-link js-nkd-link" href="#">Afrique</a>
+                  <a class="nkd-link js-nkd-link" href="#">Bretagne</a>
                 </li>
-                <li class="nkd-item js-nkd-item">
-                    <a class="nkd-link js-nkd-link" href="#">Océanie</a>
-                </li>
-            </ul>
-        </nav>
-    </body>
+              </ul>
+            </li>
+            <li class="nkd-item js-nkd-item">
+              <a class="nkd-link js-nkd-link" href="#">Espagne</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nkd-item js-nkd-item" data-state="closed">
+          <a class="nkd-link js-nkd-link" href="#">Australie</a>
+          <ul class="nkd-level js-nkd-level" data-level="1">
+            <li class="nkd-item js-nkd-item">
+              <a class="nkd-link js-nkd-link" href="#">Tasmanie</a>
+            </li>
+            <li class="nkd-item js-nkd-item">
+              <a class="nkd-link js-nkd-link" href="#">Victoria</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nkd-item js-nkd-item">
+          <a class="nkd-link js-nkd-link" href="#">Etats-Unis</a>
+        </li>
+        <li class="nkd-item js-nkd-item">
+          <a class="nkd-link js-nkd-link" href="#">Afrique</a>
+        </li>
+        <li class="nkd-item js-nkd-item">
+          <a class="nkd-link js-nkd-link" href="#">Océanie</a>
+        </li>
+      </ul>
+    </nav>
+  </body>
 </html>
