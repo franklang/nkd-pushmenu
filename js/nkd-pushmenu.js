@@ -1,6 +1,15 @@
-var $previous = $('.js-nkd-previous');
-var $currentPosition = $('.js-nkd-current-position');
-var $currentPositionInitialText = $currentPosition.text();
+// On récupère les objets communs déclarés sous le namespace 'nkd' dans nkd-common.js
+var nkdCommon = nkd;
+
+
+var nkdPushMenuSharedVars = {
+  $previous: $('.js-nkd-previous'),
+  $currentPosition: $('.js-nkd-current-position'),
+  // $currentPositionInitialText: this.$currentPosition.text()
+};
+
+console.log(nkdCommon);
+console.log(nkdPushMenuSharedVars);
 
 var nkdPushMenu = {
   onLinkClick: function(){
@@ -37,7 +46,7 @@ var nkdPushMenu = {
         .siblings()
         .addClass('nkd-hidden');
 
-      $previous
+      nkdPushMenuSharedVars.$previous
         .attr('data-current-level', + getCurrentLevelValue);
     }
   },
@@ -53,7 +62,7 @@ var nkdPushMenu = {
         .closest('ul.js-nkd-level')
         .attr('data-level');
 
-    $previous.attr('data-current-level', updateCurrentLevelValue);
+    nkdPushMenuSharedVars.$previous.attr('data-current-level', updateCurrentLevelValue);
 
     // Show previously hidden items again
     $('[data-level="' + updateCurrentLevelValue + '"')
@@ -68,10 +77,10 @@ var nkdPushMenu = {
         .children('.js-nkd-link')
         .text();
 
-    $currentPosition.empty().text(getCurrentLevelLabel);
+    nkdPushMenuSharedVars.$currentPosition.empty().text(getCurrentLevelLabel);
 
-    if ($currentPosition.text().length == 0){
-      $currentPosition.text($currentPositionInitialText);
+    if (nkdPushMenuSharedVars.$currentPosition.text().length == 0){
+      nkdPushMenuSharedVars.$currentPosition.text(nkdPushMenuSharedVars.$currentPositionInitialText);
     }
   },
 
@@ -82,10 +91,10 @@ var nkdPushMenu = {
         .prev('.js-nkd-link')
         .text();
 
-    $previous.empty().text(getPreviousLevelLabel);
+    nkdPushMenuSharedVars.$previous.empty().text(getPreviousLevelLabel);
 
-    if ($previous.text().length == 0){
-      $previous.text($currentPositionInitialText);
+    if (nkdPushMenuSharedVars.$previous.text().length == 0){
+      nkdPushMenuSharedVars.$previous.text(nkdPushMenuSharedVars.$currentPositionInitialText);
     }
   },
 
@@ -100,7 +109,7 @@ var nkdPushMenu = {
 ;(function ($, window, undefined){
   $.fn.nkdPushMenu = function(){
     $('.js-nkd-link').on('click', nkdPushMenu.onLinkClick);
-    $previous.on('click', nkdPushMenu.onPreviousLinkClick);
+    nkdPushMenuSharedVars.$previous.on('click', nkdPushMenu.onPreviousLinkClick);
     $('.js-nkd-link, .js-nkd-previous').on('click', nkdPushMenu.showCurrentAndPreviousLevelsLabels);
   };
 }(jQuery, window));
