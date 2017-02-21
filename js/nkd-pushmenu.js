@@ -4,13 +4,6 @@
     var $currentPosition = $('.js-nkd-current-position');
     var $currentPositionInitialText = $currentPosition.text();
 
-    // Set clicked link sublevel state (open/closed)
-    function setSubLevelState(element, state){
-      element
-        .parent('.js-nkd-item')
-        .attr('data-state', state);
-    }
-
     function onLinkClick(){
       // Get current nav level of clicked link
       var getLinkNavLevel = $(this)
@@ -38,7 +31,7 @@
         .attr('data-level');
 
       if (getSubLevelState == 'closed'){
-        setSubLevelState($(this),'open');
+        nkd.setSubLevelState($(this),'open');
 
         $(this)
           .parent('.js-nkd-item')

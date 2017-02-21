@@ -8,16 +8,21 @@
     <link rel="stylesheet" href="css/nkd-pushmenu-core.css">
     <link rel="stylesheet" href="css/nkd-pushmenu-skin.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="js/nkd-common.js"></script>
     <script src="js/nkd-pushmenu.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         $('#demoNakedPushMenu').nkdPushMenu();
+        $('#js-nkd-reset').on('click', function(){
+          nkd.nkdReset($('#demoNakedPushMenu'));
+        });
       });
     </script>
   </head>
   <body>
     <h1>[The Naked series] A minimalist ready-to-use and skin HTML5/SASS/jQuery multi-level push menu component for your website.</h1>
-    <nav id="demoNakedPushmenu" class="nkd nkd-pushmenu">
+    <p><button id="js-nkd-reset" role="button">Reset DOM</button></p>
+    <nav id="demoNakedPushMenu" class="nkd nkd-pushmenu">
       <div class="nkd-current-position js-nkd-current-position">Home</div>
       <a class="nkd-previous js-nkd-previous" href="#" data-current-level="0"></a>
       <ul class="nkd-level js-nkd-level" data-level="0">
