@@ -95,6 +95,16 @@
       showPreviousLevelLabel();
     }
 
+    var commonNdkReset = nkd.nkdReset;
+
+    function nkdPushMenuReset(){
+      var ret = commonNdkReset.apply(this,element);
+
+      console.log('ça passe!');
+
+      return ret;
+    }
+
     $('.js-nkd-link').on('click', onLinkClick);
     $previous.on('click', onPreviousLinkClick);
     $('.js-nkd-link, .js-nkd-previous').on('click', showCurrentAndPreviousLevelsLabels);
