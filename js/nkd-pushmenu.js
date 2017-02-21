@@ -93,8 +93,9 @@ var nkdPushMenu = {
     nkdPushMenu.showCurrentLevelLabel();
     nkdPushMenu.showPreviousLevelLabel();
   }
+};
 
-}
+
 
 ;(function ($, window, undefined){
   $.fn.nkdPushMenu = function(){
