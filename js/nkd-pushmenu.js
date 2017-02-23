@@ -1,30 +1,16 @@
 ;(function ($, window, undefined){
 
-  // var nkdPushMenuSharedVars = {};
-  //   nkdPushMenuSharedVars.$previous = $('.js-nkd-previous');
-  //   nkdPushMenuSharedVars.$currentPosition = $('.js-nkd-current-position');
-  //   nkdPushMenuSharedVars.$currentPositionInitialText = nkdPushMenuSharedVars.$currentPosition.text();
-  //   nkdPushMenuSharedVars.commonNkdReset = $.fn.nkdReset;
-
-  // console.log(
-  //   nkdPushMenuSharedVars.$previous, 
-  //   nkdPushMenuSharedVars.$currentPosition, 
-  //   nkdPushMenuSharedVars.$currentPositionInitialText
-  // );
-
-  // nkdPushMenuSharedVars.$previous.css('border', '2px solid red');  
-
-
-
   // Reset DOM to its initial state
   var commonNkdReset = $.fn.nkdReset;
-  
+
   $.fn.nkdReset = function(){
+    var $previous = $('.js-nkd-previous');
     var ret = commonNkdReset.apply(this, arguments);
 
     $(this).find('.nkd-hidden').each(function(){
       $(this).removeClass('nkd-hidden');
     });
+    $previous.attr('data-current-level','0');
 
     return ret;
   }
