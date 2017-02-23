@@ -1,25 +1,41 @@
 ;(function ($, window, undefined){
 
-  var nkdPushMenuSharedVars = {};
-    nkdPushMenuSharedVars.$previous = $('.js-nkd-previous');
-    nkdPushMenuSharedVars.$currentPosition = $('.js-nkd-current-position');
-    nkdPushMenuSharedVars.$currentPositionInitialText = nkdPushMenuSharedVars.$currentPosition.text();
-    nkdPushMenuSharedVars.commonNkdReset = $.fn.nkdReset;
+  // var nkdPushMenuSharedVars = {};
+  //   nkdPushMenuSharedVars.$previous = $('.js-nkd-previous');
+  //   nkdPushMenuSharedVars.$currentPosition = $('.js-nkd-current-position');
+  //   nkdPushMenuSharedVars.$currentPositionInitialText = nkdPushMenuSharedVars.$currentPosition.text();
+  //   nkdPushMenuSharedVars.commonNkdReset = $.fn.nkdReset;
+
+  // console.log(
+  //   nkdPushMenuSharedVars.$previous, 
+  //   nkdPushMenuSharedVars.$currentPosition, 
+  //   nkdPushMenuSharedVars.$currentPositionInitialText
+  // );
+
+  // nkdPushMenuSharedVars.$previous.css('border', '2px solid red');  
+
+
 
   // Reset DOM to its initial state
+  var commonNkdReset = $.fn.nkdReset;
+  
   $.fn.nkdReset = function(){
-    var ret = nkdPushMenuSharedVars.commonNkdReset.apply(this, arguments);
+    var ret = commonNkdReset.apply(this, arguments);
 
     $(this).find('.nkd-hidden').each(function(){
       $(this).removeClass('nkd-hidden');
     });
-    // $(this).find('.js-nkd-previous').text(nkdPushMenuSharedVars.$currentPositionInitialText); 
-    $(this).find('.js-nkd-previous').text('toto'); 
 
     return ret;
   }
 
+
+
   $.fn.nkdPushMenu = function(){
+    var $previous = $('.js-nkd-previous');
+    var $currentPosition = $('.js-nkd-current-position');
+    var $currentPositionInitialText = $currentPosition.text();
+
     function onLinkClick(){
       // Get current nav level of clicked link
       var getLinkNavLevel = $(this)
@@ -54,7 +70,7 @@
           .siblings()
           .addClass('nkd-hidden');
 
-        nkdPushMenuSharedVars.$previous
+        $previous
           .attr('data-current-level', + getCurrentLevelValue);
       }
     }
@@ -70,7 +86,7 @@
           .closest('ul.js-nkd-level')
           .attr('data-level');
 
-      nkdPushMenuSharedVars.$previous.attr('data-current-level', updateCurrentLevelValue);
+      $previous.attr('data-current-level', updateCurrentLevelValue);
 
       // Show previously hidden items again
       $('[data-level="' + updateCurrentLevelValue + '"')
@@ -85,10 +101,10 @@
           .children('.js-nkd-link')
           .text();
 
-      nkdPushMenuSharedVars.$currentPosition.empty().text(getCurrentLevelLabel);
+      $currentPosition.empty().text(getCurrentLevelLabel);
 
-      if (nkdPushMenuSharedVars.$currentPosition.text().length == 0){
-        nkdPushMenuSharedVars.$currentPosition.text(nkdPushMenuSharedVars.$currentPositionInitialText);
+      if ($currentPosition.text().length == 0){
+        $currentPosition.text($currentPositionInitialText);
       }
     }
 
@@ -99,10 +115,10 @@
           .prev('.js-nkd-link')
           .text();
 
-      nkdPushMenuSharedVars.$previous.empty().text(getPreviousLevelLabel);
+      $previous.empty().text(getPreviousLevelLabel);
 
-      if (nkdPushMenuSharedVars.$previous.text().length == 0){
-        nkdPushMenuSharedVars.$previous.text(nkdPushMenuSharedVars.$currentPositionInitialText);
+      if ($previous.text().length == 0){
+        $previous.text($currentPositionInitialText);
       }
     }
 
@@ -112,7 +128,7 @@
     }
 
     $('.js-nkd-link').on('click', onLinkClick);
-    nkdPushMenuSharedVars.$previous.on('click', onPreviousLinkClick);
+    $previous.on('click', onPreviousLinkClick);
     $('.js-nkd-link, .js-nkd-previous').on('click', showCurrentAndPreviousLevelsLabels);
   };
 }(jQuery, window));
