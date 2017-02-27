@@ -6,15 +6,18 @@
   $.fn.nkdReset = function(){
     var $previous = $('.js-nkd-previous');
     var $currentPosition = $('.js-nkd-current-position');
-    var rootPositionLabel = $currentPosition.attr('data-root-position');
+    var rootPositionLabel = $currentPosition.attr('data-root-position-label');
+
     var ret = commonNkdReset.apply(this, arguments);
 
     $(this).find('.nkd-hidden').each(function(){
       $(this).removeClass('nkd-hidden');
     });
-    $previous.attr('data-current-level','0');
-
-    $previous.text(rootPositionLabel);
+    $previous
+      .attr('data-current-level','0')
+      .text(rootPositionLabel);
+    $currentPosition
+      .text(rootPositionLabel);
 
     return ret;
   }
@@ -22,7 +25,13 @@
   $.fn.nkdPushMenu = function(){
     var $previous = $('.js-nkd-previous');
     var $currentPosition = $('.js-nkd-current-position');
-    var rootPositionLabel = $currentPosition.attr('data-root-position');
+    var rootPositionLabel = $currentPosition.attr('data-root-position-label');
+
+    function showRootPositionLabel(){
+      $currentPosition
+        .text(rootPositionLabel);
+      }
+    showRootPositionLabel();
 
     function onLinkClick(){
       // Get current nav level of clicked link
