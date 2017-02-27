@@ -2,7 +2,7 @@
 
   // Reset DOM to its initial state
   var commonNkdReset = $.fn.nkdReset;
-  
+
   $.fn.nkdReset = function(){
     var $previous = $('.js-nkd-previous');
     var $currentPosition = $('.js-nkd-current-position');
@@ -12,6 +12,7 @@
     $(this).find('.nkd-hidden').each(function(){
       $(this).removeClass('nkd-hidden');
     });
+    $previous.attr('data-current-level','0');
 
     $previous.text(rootPositionLabel);
 
