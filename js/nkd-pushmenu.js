@@ -1,40 +1,27 @@
 ;(function ($, window, undefined){
 
-  // var nkdPushMenuSharedVars = {};
-  //   nkdPushMenuSharedVars.$previous = $('.js-nkd-previous');
-  //   nkdPushMenuSharedVars.$currentPosition = $('.js-nkd-current-position');
-  //   nkdPushMenuSharedVars.$currentPositionInitialText = nkdPushMenuSharedVars.$currentPosition.text();
-  //   nkdPushMenuSharedVars.commonNkdReset = $.fn.nkdReset;
-
-  // console.log(
-  //   nkdPushMenuSharedVars.$previous, 
-  //   nkdPushMenuSharedVars.$currentPosition, 
-  //   nkdPushMenuSharedVars.$currentPositionInitialText
-  // );
-
-  // nkdPushMenuSharedVars.$previous.css('border', '2px solid red');  
-
-
-
   // Reset DOM to its initial state
   var commonNkdReset = $.fn.nkdReset;
   
   $.fn.nkdReset = function(){
+    var $previous = $('.js-nkd-previous');
+    var $currentPosition = $('.js-nkd-current-position');
+    var rootPositionLabel = $currentPosition.attr('data-root-position');
     var ret = commonNkdReset.apply(this, arguments);
 
     $(this).find('.nkd-hidden').each(function(){
       $(this).removeClass('nkd-hidden');
     });
 
+    $previous.text(rootPositionLabel);
+
     return ret;
   }
-
-
 
   $.fn.nkdPushMenu = function(){
     var $previous = $('.js-nkd-previous');
     var $currentPosition = $('.js-nkd-current-position');
-    var $currentPositionInitialText = $currentPosition.text();
+    var rootPositionLabel = $currentPosition.attr('data-root-position');
 
     function onLinkClick(){
       // Get current nav level of clicked link
@@ -104,7 +91,7 @@
       $currentPosition.empty().text(getCurrentLevelLabel);
 
       if ($currentPosition.text().length == 0){
-        $currentPosition.text($currentPositionInitialText);
+        $currentPosition.text(rootPositionLabel);
       }
     }
 
@@ -118,7 +105,7 @@
       $previous.empty().text(getPreviousLevelLabel);
 
       if ($previous.text().length == 0){
-        $previous.text($currentPositionInitialText);
+        $previous.text(rootPositionLabel);
       }
     }
 
